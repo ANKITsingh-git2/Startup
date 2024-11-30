@@ -159,29 +159,56 @@ const Wrapper = styled.div`
       width: 100%;
     }
   }
-  & > .options {
-    margin-top: 10px;
-    display: flex;
-    justify-content: end;
-    gap: 5px;
-    & > .btn {
-      justify-self: flex-end;
+  & > // In Applicant wrapper styling
+.options {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  position: relative;
+  isolation: isolate;
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    border: none;
+    transition: all 0.2s ease;
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+    user-select: none;
+    
+    &:active {
+      transform: scale(0.98);
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      z-index: -1;
+    }
+    
+    &.reject {
+      background-color: #ff4d4f;
       color: white;
-      font-weight: bold;
-      border-radius: 25px;
-      min-width: 100px;
-      font-size: 1.2rem;
-      padding: 0.5%;
+      
+      &:hover {
+        background-color: #ff7875;
+      }
     }
-
-    & > .hire {
-      background-color: black;
-    }
-
-    & > .reject {
-      background-color: #ff4040;
-      border: none;
+    
+    &.hire {
+      background-color: #52c41a;
+      color: white;
+      
+      &:hover {
+        background-color: #73d13d;
+      }
     }
   }
+}
+
 `;
 export default Wrapper;
